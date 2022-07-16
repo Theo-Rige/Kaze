@@ -5,6 +5,8 @@
 		<InputRange id="test3" label="Exemple de label" :max="3000" />
 		<InputSelect id="test4" label="Exemple de label" :options="array" options_value="value" options_label="label" />
 		<InputMultiSelect id="test5" label="Exemple de label" :options="array" options_label="label" />
+
+		<router-link to="/register">lien Inscription</router-link>
 	</div>
 </template>
 
