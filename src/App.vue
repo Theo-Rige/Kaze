@@ -1,30 +1,66 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+	<img src="@/assets/noise.webp" class="background" alt="Noise baqckground" />
+	<router-view />
 </template>
 
+<script></script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+* {
+	box-sizing: border-box;
 }
 
-nav {
-  padding: 30px;
+html {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	width: 100vw;
+	height: 100%;
+	overflow: hidden;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+body {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	width: 100vw;
+	height: 100%;
+	overflow: hidden;
+	font-family: $poppins;
+	font-size: 100%;
+	color: $white;
+	background: $dark-green;
+	@include flex(column, false, center, false);
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+	&::before,
+	&::after {
+		content: '';
+		position: absolute;
+		z-index: -1;
+		width: 60vw;
+		height: 60vw;
+		border-radius: 50%;
+		background: #42865b;
+		filter: blur(30vw);
+	}
+
+	&::before {
+		top: 0;
+		right: -25%;
+	}
+
+	&::after {
+		bottom: 10%;
+		left: -25%;
+	}
+
+	.background {
+		position: absolute;
+		z-index: -1;
+		top: 0;
+		height: 100vh;
+		aspect-ratio: 16/9;
+		opacity: 0.4;
+	}
 }
 </style>

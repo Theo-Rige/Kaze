@@ -1,0 +1,51 @@
+/** TABLE OF CONTENTS
+1 — General
+2 - Colors
+3 - Fonts
+4 - Functions
+/// END TABLE OF CONTENTS **/
+
+// 1 - General
+$main-space: space(10);
+$main-radius: 0px;
+
+// 2 — Colors
+$white: #eee;
+$black: #202020;
+
+// $main-color: #5603ad;
+$green: #aafc95;
+$dark-green: #0d2922;
+$cyan: #89e8a9;
+$gradient: linear-gradient(30deg, $green, $cyan);
+$back-color: #ffffff1a;
+$info-color: #00b8d9;
+$success-color: #36b37e;
+$warning-color: #ffab00;
+$error-color: #ff5630;
+
+@mixin backdrop {
+	@supports (backdrop-filter: blur(4px)) {
+		background-color: $back-color;
+		backdrop-filter: blur(4px);
+	}
+	@supports not (backdrop-filter: blur(4px)) {
+		background-color: $back-color;
+	}
+}
+
+// 3 - Fonts
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap');
+$poppins: 'Poppins', sans-serif;
+
+@mixin h1 {
+	all: unset;
+	display: block;
+	font-size: 1.5rem;
+	font-weight: 600;
+}
+
+// 4 - Functions
+@function space($size) {
+	@return $size * 8px;
+}

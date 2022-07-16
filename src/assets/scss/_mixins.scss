@@ -1,0 +1,57 @@
+/** TABLE OF CONTENTS
+1 — Flex
+2 - Skeleton
+2 - Misc
+/// END TABLE OF CONTENTS **/
+
+// 1 — Flex
+@mixin flex($direction: false, $justify: false, $align: false, $gap: false) {
+	display: flex;
+
+	@if $direction != false {
+		flex-direction: $direction;
+	}
+
+	@if $justify != false {
+		justify-content: $justify;
+	}
+
+	@if $align != false {
+		align-items: $align;
+	}
+
+	@if $gap != false {
+		gap: $gap;
+	}
+}
+
+// 2 - Skeleton
+@mixin skeleton($height, $width) {
+	height: $height;
+	width: $width;
+	border-radius: $height;
+	background: linear-gradient(-45deg, #222222, #333333, #222222, #333333);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 2.25s ease infinite;
+	-moz-animation: Gradient 2.25s ease infinite;
+	animation: Gradient 2.25s ease infinite;
+
+	@keyframes Gradient {
+		0%,
+		50% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+	}
+}
+
+// 3 - Misc
+@mixin transition($property) {
+	transition: $property 0.2s ease-in-out;
+}
+
+@mixin shadow {
+	box-shadow: 0px 0px 2.2px rgb(0 0 0 / 2%), 0px 0px 5.3px rgb(0 0 0 / 3%), 0px 0px 10px rgb(0 0 0 / 4%), 0px 0px 17.9px rgb(0 0 0 / 4%), 0px 0px 33.4px rgb(0 0 0 / 5%), 0px 0px 80px rgb(0 0 0 / 7%);
+}
