@@ -43,6 +43,7 @@ const user = reactive({ data: {} })
 const isBookmarked = ref(false)
 
 const update = async (field, value, remove = false, json = false) => {
+	console.log(user.data)
 	if (typeof user.data[field] === 'object' && !json) {
 		if (remove) {
 			user.data[field] = user.data[field].filter((item) => item.id !== parseInt(value))
@@ -60,7 +61,7 @@ const update = async (field, value, remove = false, json = false) => {
 	}
 
 	await axios.put(
-		'http://theorige.com/api/users/' + user_local.id,
+		'https://theorige.com/api/users/' + user_local.id,
 		{
 			[field]: value,
 		},
@@ -73,7 +74,7 @@ const update = async (field, value, remove = false, json = false) => {
 }
 
 onBeforeMount(async () => {
-	const getUser = await axios.get('http://theorige.com/api/users/' + user_local.id + '?populate=*', {
+	const getUser = await axios.get('https://theorige.com/api/users/' + user_local.id + '?populate=*', {
 		headers: {
 			Authorization: `Bearer ${token}`,
 		},

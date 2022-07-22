@@ -197,7 +197,7 @@ onUpdated(() => {
 			])
 			.onSuccess(async () => {
 				try {
-					const request = await axios.post('http://theorige.com/api/auth/local/register', {
+					const request = await axios.post('https://theorige.com/api/auth/local/register', {
 						username: data.first_name + ' ' + data.last_name,
 						age: parseInt(data.age),
 						email: data.email,

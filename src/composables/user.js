@@ -5,7 +5,7 @@ const token = localStorage.getItem('jwt')
 const user_local = JSON.parse(localStorage.getItem('user'))
 
 export async function useUser() {
-	const { data } = await axios.get('http://theorige.com/api/users/' + user_local.id + '?populate=*', {
+	const { data } = await axios.get('https://theorige.com/api/users/' + user_local.id + '?populate=*', {
 		headers: {
 			Authorization: `Bearer ${token}`,
 		},

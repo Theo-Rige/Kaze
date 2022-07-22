@@ -86,7 +86,7 @@
 				</div>
 			</template>
 
-			<ButtonDefault label="Sauvegarder" @click="updateSearch(data)" white :disabled="canUpdate == true ? false : true" />
+			<ButtonDefault label="Sauvegarder" @click="updateSearch()" white :disabled="canUpdate == true ? false : true" />
 		</form>
 	</main>
 </template>
@@ -108,6 +108,7 @@ import InputCheckBtn from '@/components/InputCheckBtn.vue'
 const router = useRouter()
 const token = localStorage.getItem('jwt')
 const user = JSON.parse(localStorage.getItem('user'))
+console.log(user)
 const data = reactive({
 	search: [],
 })
@@ -250,9 +251,11 @@ const defaultDataSearch = [
 		],
 	},
 ]
-
 onBeforeMount(() => {
+	// console.log(user)
+	// console.log(user.value.search)
 	if (user.search == null || user.search.length == 0) {
+		console.log('ouuuiiii')
 		user.search = defaultDataSearch
 	}
 	data.search = user.search
@@ -260,15 +263,13 @@ onBeforeMount(() => {
 
 const checkUpdate = () => {
 	canUpdate.value = true
-
-	console.log(data.search)
 	// form.canUpdate = false
 }
 
-const updateSearch = async (data) => {
+const updateSearch = async () => {
 	try {
 		const request = await axios.put(
-			'http://theorige.com/api/users/' + user.id,
+			'https://theorige.com/api/users/' + user.id,
 			{
 				search: data.search,
 			},

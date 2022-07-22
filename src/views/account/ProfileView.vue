@@ -106,7 +106,7 @@ const saveProfile = () => {
 const updateProfile = async () => {
 	try {
 		const request = await axios.put(
-			'http://theorige.com/api/users/' + user.id,
+			'https://theorige.com/api/users/' + user.id,
 			{
 				username: form.username,
 				age: form.age,

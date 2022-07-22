@@ -7,7 +7,7 @@
 			</div>
 		</template>
 		<template v-else>
-			<div class="home__cards" v-if="user.publisher">
+			<div class="home__cards" v-if="!user.publisher">
 				<div class="card placeholder">
 					<div class="card__wrapper">
 						<div class="card__content_image"></div>
@@ -42,7 +42,7 @@
 				/>
 			</div>
 
-			<div class="home__actions" v-if="user.publisher">
+			<div class="home__actions" v-if="!user.publisher">
 				<ButtonDefault round @click="action = 'cardRejected'"><XIcon /></ButtonDefault>
 				<ButtonDefault round gradient @click="action = 'cardAccepted'"><CheckIcon /></ButtonDefault>
 			</div>
@@ -61,7 +61,6 @@ import axios from 'axios'
 
 const token = localStorage.getItem('jwt')
 const user = JSON.parse(localStorage.getItem('user'))
-
 const excludes = reactive({
 	postuled: {
 		data: [],
@@ -85,7 +84,7 @@ onBeforeMount(async () => {
 	if (user.publisher) {
 		console.log('publisher')
 	} else {
-		const getExcludes = await axios.get('http://theorige.com/api/users/' + user.id + '?fields[0]=rejected&populate[postuled][fields][0]=id&populate[bookmarks][fields][0]=id', {
+		const getExcludes = await axios.get('https://theorige.com/api/users/' + user.id + '?fields[0]=rejected&populate[postuled][fields][0]=id&populate[bookmarks][fields][0]=id', {
 			headers: {
 				Authorization: `Bearer ${token}`,
 			},
@@ -119,7 +118,7 @@ onBeforeMount(async () => {
 			index++
 		})
 
-		const getColocations = await axios.get('http://theorige.com/api/colocations?populate=*' + excludes.query, {
+		const getColocations = await axios.get('https://theorige.com/api/colocations?populate=*' + excludes.query, {
 			headers: {
 				Authorization: `Bearer ${token}`,
 			},
@@ -129,7 +128,7 @@ onBeforeMount(async () => {
 })
 const resetProfile = async () => {
 	await axios.put(
-		'http://theorige.com/api/users/' + user.id,
+		'https://theorige.com/api/users/' + user.id,
 		{
 			rejected: [],
 			postuled: [],
