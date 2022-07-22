@@ -7,7 +7,7 @@
 					:name="(annonce.type === 'flat' ? 'Appartement' : 'Maison') + ' de ' + annonce.area + ' m²'"
 					:adress="annonce.adress"
 					:price="Math.min(...annonce.rooms.map((room) => room.rent))"
-					:thumbnail="'http://kaze.theorige.com' + annonce.covers[0].formats.small.url"
+					:thumbnail="'http://theorige.com' + annonce.covers[0].formats.small.url"
 				/>
 			</li>
 		</ul>
@@ -34,9 +34,9 @@ onBeforeMount(async () => {
 	if (user.publisher) {
 		console.log('publisher')
 	} else {
-		// http://kaze.theorige.com/api/users?filters[username][$eq]=' + user.id
+		// http://theorige.com/api/users?filters[username][$eq]=' + user.id
 
-		const { data } = await axios.get('http://kaze.theorige.com/api/users/' + user.id + '?fields[0]=username&populate[bookmarks][populate][0]=covers', {
+		const { data } = await axios.get('http://theorige.com/api/users/' + user.id + '?fields[0]=username&populate[bookmarks][populate][0]=covers', {
 			headers: {
 				Authorization: `Bearer ${token}`,
 			},

@@ -10,7 +10,7 @@
 		}"
 	>
 		<div class="card__wrapper">
-			<img :src="'http://kaze.theorige.com' + props.card.attributes.covers.data[0].attributes.formats.medium.url" alt="Image de présentation" />
+			<img :src="'http://theorige.com' + props.card.attributes.covers.data[0].attributes.formats.medium.url" alt="Image de présentation" />
 			<div class="card__content">
 				<h2>{{ props.card.attributes.type === 'flat' ? 'Appartement' : 'Maison' }} de {{ props.card.attributes.area }} m²</h2>
 				<span class="card__content_district">{{ props.card.attributes.adress }}</span>

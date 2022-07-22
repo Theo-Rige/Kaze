@@ -57,7 +57,7 @@ const checkUpdate = () => {
 const updateProfile = async () => {
 	try {
 		const request = await axios.put(
-			'http://kaze.theorige.com/api/users/' + user.id,
+			'http://theorige.com/api/users/' + user.id,
 			{
 				publisher: form.publisher,
 			},

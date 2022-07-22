@@ -30,7 +30,7 @@ const form = reactive({
 
 const login = async () => {
 	try {
-		const request = await axios.post('http://kaze.theorige.com/api/auth/local', {
+		const request = await axios.post('http://theorige.com/api/auth/local', {
 			identifier: form.email,
 			password: form.password,
 		})

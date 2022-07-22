@@ -1,6 +1,6 @@
 <template>
 	<main class="advert" v-if="advert">
-		<img :src="'http://kaze.theorige.com' + advert.attributes.covers.data[0].attributes.formats.medium.url" alt="Couverture de l'annonce" />
+		<img :src="'http://theorige.com' + advert.attributes.covers.data[0].attributes.formats.medium.url" alt="Couverture de l'annonce" />
 		<div class="advert__content">
 			<h1>{{ advert.attributes.type === 'flat' ? 'Appartement' : 'Maison' }} de {{ advert.attributes.area }} m²</h1>
 			<span class="advert__content_district">{{ advert.attributes.adress }}</span>
@@ -83,7 +83,7 @@ const situations = {
 }
 
 onBeforeMount(async () => {
-	const { data } = await axios.get('http://kaze.theorige.com/api/colocations/' + route.params.id + '?populate=*', {
+	const { data } = await axios.get('http://theorige.com/api/colocations/' + route.params.id + '?populate=*', {
 		headers: {
 			Authorization: `Bearer ${token}`,
 		},

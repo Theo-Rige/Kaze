@@ -85,7 +85,7 @@ onBeforeMount(async () => {
 	if (user.publisher) {
 		console.log('publisher')
 	} else {
-		const getExcludes = await axios.get('http://kaze.theorige.com/api/users/' + user.id + '?fields[0]=rejected&populate[postuled][fields][0]=id&populate[bookmarks][fields][0]=id', {
+		const getExcludes = await axios.get('http://theorige.com/api/users/' + user.id + '?fields[0]=rejected&populate[postuled][fields][0]=id&populate[bookmarks][fields][0]=id', {
 			headers: {
 				Authorization: `Bearer ${token}`,
 			},
@@ -119,7 +119,7 @@ onBeforeMount(async () => {
 			index++
 		})
 
-		const getColocations = await axios.get('http://kaze.theorige.com/api/colocations?populate=*' + excludes.query, {
+		const getColocations = await axios.get('http://theorige.com/api/colocations?populate=*' + excludes.query, {
 			headers: {
 				Authorization: `Bearer ${token}`,
 			},
@@ -129,7 +129,7 @@ onBeforeMount(async () => {
 })
 const resetProfile = async () => {
 	await axios.put(
-		'http://kaze.theorige.com/api/users/' + user.id,
+		'http://theorige.com/api/users/' + user.id,
 		{
 			rejected: [],
 			postuled: [],
@@ -257,7 +257,7 @@ const resetProfile = async () => {
 }
 
 .empty-cards {
-	span{
+	span {
 		text-align: center;
 		font-size: 1.2rem;
 		line-height: 1.5rem;

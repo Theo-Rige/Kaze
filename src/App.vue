@@ -60,7 +60,7 @@ const update = async (field, value, remove = false, json = false) => {
 	}
 
 	await axios.put(
-		'http://kaze.theorige.com/api/users/' + user_local.id,
+		'http://theorige.com/api/users/' + user_local.id,
 		{
 			[field]: value,
 		},
@@ -73,7 +73,7 @@ const update = async (field, value, remove = false, json = false) => {
 }
 
 onBeforeMount(async () => {
-	const getUser = await axios.get('http://kaze.theorige.com/api/users/' + user_local.id + '?populate=*', {
+	const getUser = await axios.get('http://theorige.com/api/users/' + user_local.id + '?populate=*', {
 		headers: {
 			Authorization: `Bearer ${token}`,
 		},

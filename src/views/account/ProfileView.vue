@@ -106,7 +106,7 @@ const saveProfile = () => {
 const updateProfile = async () => {
 	try {
 		const request = await axios.put(
-			'http://kaze.theorige.com/api/users/' + user.id,
+			'http://theorige.com/api/users/' + user.id,
 			{
 				username: form.username,
 				age: form.age,
@@ -120,13 +120,12 @@ const updateProfile = async () => {
 			}
 		)
 		if (request.statusText == 'OK') {
-			form.canUpdate = false;
-			user.username = form.username;
-			user.age = form.age;
-			user.email = form.email;
-			user.phone = form.phone;
-			window.localStorage.setItem('user', JSON.stringify(user));
-
+			form.canUpdate = false
+			user.username = form.username
+			user.age = form.age
+			user.email = form.email
+			user.phone = form.phone
+			window.localStorage.setItem('user', JSON.stringify(user))
 		}
 
 		// await toast.set('Inscription réussie, vous allez être redirigé vers la page de connexion', 'success')
