@@ -1,0 +1,12 @@
+{
+	"short_name": "Kaze",
+	"name": "Kaze app : la coloc smooth",
+	"start_url": "/",
+	"background_color": "#0d2922",
+	"display": "standalone",
+	"scope": "/",
+	"theme_color": "#aafc95",
+	"shortcuts": [],
+	"description": "Platforme de colocations",
+	"screenshots": []
+}

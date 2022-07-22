@@ -1,5 +1,5 @@
 <template>
-	<button :type="props.type" :class="{ transparent: props.transparent, white: props.white, gradient: props.gradient }">
+	<button :type="props.type" :class="{ round: props.round, transparent: props.transparent, white: props.white, gradient: props.gradient }">
 		<slot>{{ props.label }}</slot>
 	</button>
 </template>
@@ -14,6 +14,10 @@ const props = defineProps({
 	type: {
 		type: String,
 		default: 'button',
+	},
+	round: {
+		type: Boolean,
+		default: false,
 	},
 	transparent: {
 		type: Boolean,
@@ -30,16 +34,17 @@ const props = defineProps({
 })
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 button {
 	all: unset;
 	box-sizing: border-box;
-	height: 50px;
-	width: 100%;
+	height: $input-height;
 	padding: 0 space(3);
 	border-radius: 25px;
 	font-weight: 500;
 	color: $white;
+	flex-shrink: 0;
+	flex-grow: 1;
 	@include flex(false, center, center);
 	@include backdrop;
 	// @include transition(background);
@@ -48,10 +53,13 @@ button {
 		cursor: pointer;
 	}
 
+	&:disabled {
+		filter: brightness(0.7);
+	}
+
 	&.transparent {
-		padding: 0;
-		width: 50px;
 		background: none;
+		backdrop-filter: none;
 	}
 
 	&.white,
@@ -65,6 +73,16 @@ button {
 
 	&.gradient {
 		background: $gradient;
+	}
+
+	&.round {
+		padding: 0;
+		width: $input-height;
+		flex-grow: 0;
+	}
+
+	svg {
+		height: 20px;
 	}
 }
 </style>

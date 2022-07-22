@@ -29,7 +29,7 @@ const props = defineProps({
 a {
 	all: unset;
 	box-sizing: border-box;
-	height: 50px;
+	height: $input-height;
 	width: 100%;
 	padding: 0 space(3);
 	border-radius: 25px;

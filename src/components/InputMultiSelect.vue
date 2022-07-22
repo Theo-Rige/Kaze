@@ -1,5 +1,5 @@
 <template>
-	<label :for="props.id" class="input-select">
+	<label class="input-select">
 		{{ props.label }}
 		<div class="input-select__wrapper" :class="{ active: focus }" tabindex="1" @click="focus = !focus" @blur="focus = false">
 			<ChevronDownIcon />
@@ -19,10 +19,6 @@ import { ChevronDownIcon } from '@heroicons/vue/solid'
 import InputCheck from '@/components/InputCheck.vue'
 
 const props = defineProps({
-	id: {
-		type: String,
-		required: true,
-	},
 	label: {
 		type: String,
 		required: true,
@@ -71,7 +67,7 @@ const focus = ref(false)
 		position: relative;
 		margin-top: space(2);
 		border-radius: 25px;
-		max-height: 50px;
+		max-height: $input-height;
 		overflow: hidden;
 		@include backdrop;
 		@include transition(max-height);
@@ -80,7 +76,7 @@ const focus = ref(false)
 			position: absolute;
 			color: $white;
 			height: space(4);
-			top: calc((50px - space(4)) / 2);
+			top: calc(($input-height - space(4)) / 2);
 			right: space(2);
 			@include transition(transform);
 		}
@@ -88,8 +84,8 @@ const focus = ref(false)
 		span {
 			display: block;
 			margin: 0 space(3);
-			height: 50px;
-			line-height: 50px;
+			height: $input-height;
+			line-height: $input-height;
 		}
 
 		hr {
@@ -103,9 +99,9 @@ const focus = ref(false)
 
 		fieldset {
 			.input-check {
-				height: 50px;
+				height: $input-height;
 				padding: 0 space(3);
-				line-height: 50px;
+				line-height: $input-height;
 				font-size: 0.875rem;
 
 				&:hover {

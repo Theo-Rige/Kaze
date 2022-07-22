@@ -6,8 +6,9 @@
 /// END TABLE OF CONTENTS **/
 
 // 1 - General
-$main-space: space(10);
+$main-space: 24px;
 $main-radius: 0px;
+$input-height: 45px;
 
 // 2 — Colors
 $white: #eee;
@@ -19,6 +20,7 @@ $dark-green: #0d2922;
 $cyan: #89e8a9;
 $gradient: linear-gradient(30deg, $green, $cyan);
 $back-color: #ffffff1a;
+$border-color: #ffffff33;
 $info-color: #00b8d9;
 $success-color: #36b37e;
 $warning-color: #ffab00;
@@ -41,8 +43,16 @@ $poppins: 'Poppins', sans-serif;
 @mixin h1 {
 	all: unset;
 	display: block;
+	width: 100%;
 	font-size: 1.5rem;
 	font-weight: 600;
+}
+
+@mixin label {
+	font-size: 0.875rem;
+	font-weight: 300;
+	font-style: normal;
+	color: #bfbfbf;
 }
 
 // 4 - Functions

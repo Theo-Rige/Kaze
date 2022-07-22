@@ -85,8 +85,6 @@ video {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-size: 100%;
-	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -123,4 +121,19 @@ q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+	-moz-appearance: textfield;
+}
+
+a {
+	text-decoration: none;
+	color: #fff;
 }

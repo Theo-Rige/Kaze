@@ -16,7 +16,7 @@ import ButtonLink from '@/components/ButtonLink.vue'
 <style lang="scss" scoped>
 .auth {
 	position: relative;
-	padding: space(5);
+	padding: $main-space;
 	height: 100vh;
 	@include flex(column, center, center);
 	.logo {

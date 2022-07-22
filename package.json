@@ -9,7 +9,12 @@
   },
   "dependencies": {
     "@heroicons/vue": "^1.0.6",
+    "animejs": "^3.2.1",
+    "axios": "^0.27.2",
     "core-js": "^3.8.3",
+    "interactjs": "^1.10.17",
+    "just-validate": "^3.8.1",
+    "pristinejs": "^0.1.9",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3"
   },

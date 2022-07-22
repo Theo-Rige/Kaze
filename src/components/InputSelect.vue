@@ -1,29 +1,27 @@
 <template>
-	<label :for="props.id" class="input-select">
+	<label class="input-select">
 		{{ props.label }}
 		<select :id="props.id" v-model="value">
 			<option v-for="option in props.options" :key="option" :value="option[props.options_value]"></option>
 		</select>
-		<div class="input-select__wrapper" :class="{ active: focus }" tabindex="1" @click="focus = !focus" @blur="focus = false">
+		<div class="input-select__wrapper" :class="{ active: focus }" tabindex="1" @blur="focus = false">
 			<ChevronDownIcon />
-			<span>{{ current }}</span>
+			<span @click="focus = !focus">{{ current }}</span>
 			<hr />
 			<ul>
-				<li v-for="option in props.options" :key="option" @click="value = option[props.options_value]">{{ option[props.options_label] }}</li>
+				<li v-for="option in props.options" :key="option" @click="select(option)">
+					{{ option[props.options_label] }}
+				</li>
 			</ul>
 		</div>
 	</label>
 </template>
 
 <script setup>
-import { defineProps, ref, computed } from 'vue'
+import { defineProps, defineEmits, ref, computed } from 'vue'
 import { ChevronDownIcon } from '@heroicons/vue/solid'
 
 const props = defineProps({
-	id: {
-		type: String,
-		required: true,
-	},
 	label: {
 		type: String,
 		required: true,
@@ -34,17 +32,28 @@ const props = defineProps({
 	},
 	options_value: {
 		type: String,
-		required: true,
+		default: 'value',
 	},
 	options_label: {
 		type: String,
-		required: true,
+		default: 'label',
 	},
+	id: String,
+	model: String,
 })
 
-const value = ref()
+const value = computed({
+	get() {
+		return props.model
+	},
+	set(value) {
+		emit('update:model', value)
+	},
+})
+const emit = defineEmits(['update:model'])
+
 const current = computed(() => {
-	if (value.value != undefined) {
+	if (value.value != undefined && value.value != '') {
 		return props.options
 			.filter((option) => {
 				return option[props.options_value] === value.value
@@ -55,14 +64,17 @@ const current = computed(() => {
 	}
 })
 const focus = ref(false)
+
+const select = (option) => {
+	value.value = option[props.options_value]
+	focus.value = false
+}
 </script>
 
 <style scoped lang="scss">
 .input-select {
 	width: 100%;
-	font-style: normal;
-	font-weight: 400;
-	font-size: 1rem;
+	@include label;
 
 	select {
 		display: none;
@@ -72,7 +84,7 @@ const focus = ref(false)
 		position: relative;
 		margin-top: space(2);
 		border-radius: 25px;
-		max-height: 50px;
+		max-height: $input-height;
 		overflow: hidden;
 		@include backdrop;
 		@include transition(max-height);
@@ -81,7 +93,7 @@ const focus = ref(false)
 			position: absolute;
 			color: $white;
 			height: space(4);
-			top: calc((50px - space(4)) / 2);
+			top: calc(($input-height - space(4)) / 2);
 			right: space(2);
 			@include transition(transform);
 		}
@@ -89,8 +101,8 @@ const focus = ref(false)
 		span {
 			display: block;
 			margin: 0 space(3);
-			height: 50px;
-			line-height: 50px;
+			height: $input-height;
+			line-height: $input-height;
 		}
 
 		hr {
@@ -104,9 +116,9 @@ const focus = ref(false)
 
 		ul {
 			li {
-				height: 50px;
+				height: $input-height;
 				padding: 0 space(3);
-				line-height: 50px;
+				line-height: $input-height;
 				font-size: 0.875rem;
 
 				&:hover {
@@ -124,5 +136,17 @@ const focus = ref(false)
 			}
 		}
 	}
+
+	.just-validate-error-label {
+		margin-top: space(1);
+		font-size: 0.875rem;
+		color: $warning-color !important;
+	}
+}
+
+.just-validate-error-label {
+	margin-top: space(1);
+	font-size: 0.875rem;
+	color: $warning-color !important;
 }
 </style>
